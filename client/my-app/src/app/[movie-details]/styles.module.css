@@ -1,0 +1,42 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.reviewList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.reviewCard {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+.deleteButton {
+    /* Add delete button styles here */
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: #ff7875;
+}
+.searchInput{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.noReviewsText {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
