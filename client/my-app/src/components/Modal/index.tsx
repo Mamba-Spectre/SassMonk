@@ -27,7 +27,7 @@ interface ReviewFormData {
 const Modal: React.FC<ModalProps> = ({ closeModal, handleSubmit, modalType }) => {
   const [movieOptions, setMovieOptions] = useState<{ value: string; label: string }[]>([]);
   const [selectedMovie, setSelectedMovie] = useState<{ value: string; label: string } | null>(null);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<any>({
     name: "",
     releaseDate: "",
     reviewerName: "",
