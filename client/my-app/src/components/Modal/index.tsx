@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal, handleSubmit, modalType }) =>
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormData((prevData: any) => ({
       ...prevData,
       [name]: value,
     }));
@@ -51,7 +51,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal, handleSubmit, modalType }) =>
 
   const handleMovieChange = (selectedOption: { value: string; label: string } | null) => {
     setSelectedMovie(selectedOption);
-    setFormData((prevData) => ({
+    setFormData((prevData:any) => ({
       ...prevData,
       movieId: selectedOption ? selectedOption.value : "",
     }));
