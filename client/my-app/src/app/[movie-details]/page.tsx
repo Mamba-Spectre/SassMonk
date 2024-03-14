@@ -21,7 +21,7 @@ const ReviewsPage: React.FC = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await axios.get<Review[]>(`http://localhost:8080/movie1/${movieId}/reviews`);
+                const response = await axios.get<Review[]>(`http://localhost:8080/reviews/movie1/${movieId}/reviews`);
                 setReviews(response.data);
             } catch (error) {
                 console.error("Error fetching reviews:", error);

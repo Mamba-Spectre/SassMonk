@@ -1,8 +1,8 @@
 import { deleteReview, getAllReviews, postReview } from '../controllers/reviews';
 import express from 'express';
+const router = express.Router();
 
-export default(router: express.Router) => {
     router.get('/movie1/:id/reviews',getAllReviews);
-    router.post('/reviews',postReview);
-    router.delete('/reviews/:id',deleteReview);
-};
+    router.post('/',postReview);
+    router.delete('/:id',deleteReview);
+export default router;

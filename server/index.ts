@@ -21,10 +21,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(compression());
+app.use('/', router);
 
-const server = http.createServer(app);
-
-server.listen(8080, () => {
+// const server = http.createServer(app);
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
     console.log('Server is running on port 8080');
 });
 const MONGO_URI:any = process.env.MONGO_URI;
@@ -41,5 +42,4 @@ mongoose.connection.on('connected', () => {
     console.log('MongoDB connected');
 });
 
-app.use('/', router());
 
