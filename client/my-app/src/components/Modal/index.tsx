@@ -60,7 +60,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal, handleSubmit, modalType }) =>
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/movies");
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/movies`);
         const movies = response.data.map((movie: { _id: string; name: string }) => ({
           value: movie._id,
           label: movie.name,

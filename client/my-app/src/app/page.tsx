@@ -21,7 +21,7 @@ export default function Home() {
 
   const deleteMovie = async (movieId: string) => {
     try {
-      await axios.delete(`http://localhost:8080/movies/${movieId}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/movies/${movieId}`);
       fetchAllMovies();
     } catch (error:any) {
       toast.error(error, { autoClose: 2000 })
@@ -30,7 +30,7 @@ export default function Home() {
 
   const fetchAllMovies = async () => {
     try {
-      const response = await axios.get<Movie[]>("http://localhost:8080/movies");
+      const response = await axios.get<Movie[]>(`${process.env.NEXT_PUBLIC_API_URL}/movies`);
       setMovies(response.data);
       setFilteredMoviesList(response.data);
     } catch (error) {
@@ -69,7 +69,8 @@ export default function Home() {
         />
         <div className={styles.movieList}>
           {filteredMoviesList.map((movie) => (
-            <div key={movie._id} className={styles.movieCard} onClick={()=>{
+            <div key={movie._id} className={styles.movieCard} onClick={(e)=>{
+              e.preventDefault();
               router.push(`/movie-details?id=${movie._id}`)
             }}>
               <div>
@@ -78,7 +79,11 @@ export default function Home() {
                   Release Date: {new Date(movie.releaseDate).toDateString()}
                 </p>
                 <p>Average Rating: {movie.averageRating}</p>
-                <button onClick={() => deleteMovie(movie._id)} className={styles.deleteButton}>Delete Movie</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+              e.stopPropagation();
+
+                  deleteMovie(movie._id)}} className={styles.deleteButton}>Delete Movie</button>
               </div>
             </div>
           ))}

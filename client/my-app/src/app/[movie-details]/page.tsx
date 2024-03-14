@@ -21,7 +21,7 @@ const ReviewsPage: React.FC = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await axios.get<Review[]>(`http://localhost:8080/reviews/movie1/${movieId}/reviews`);
+                const response = await axios.get<Review[]>(`${process.env.NEXT_PUBLIC_API_URL}/reviews/movie1/${movieId}/reviews`);
                 setReviews(response.data);
             } catch (error) {
                 console.error("Error fetching reviews:", error);
@@ -34,7 +34,7 @@ const ReviewsPage: React.FC = () => {
 
     const handleDeleteReview = async (reviewId: string) => {
         try {
-            await axios.delete(`http://localhost:8080/reviews/${reviewId}`);
+            await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/reviews/${reviewId}`);
             setReviews(reviews.filter(review => review._id !== reviewId));
         } catch (error) {
             console.error("Error deleting review:", error);

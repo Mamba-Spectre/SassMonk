@@ -16,7 +16,7 @@ const NavBar: React.FC<NavBarProps> = () => {
         if (modalType === "movie") {
             try {
                 const response = await axios.post(
-                    "http://localhost:8080/movies",
+                    `${process.env.NEXT_PUBLIC_API_URL}/movies`,
                     formData
                 );
                 closeModal();
@@ -30,7 +30,7 @@ const NavBar: React.FC<NavBarProps> = () => {
             console.log("Form data:", formData);
             try {
                 const response = await axios.post(
-                    `http://localhost:8080/reviews`,
+                    `${process.env.NEXT_PUBLIC_API_URL}/reviews`,
                     formData
                 );
                 closeModal();
